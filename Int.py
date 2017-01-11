@@ -30,6 +30,7 @@ while n < 10:
  elif not r:
          print('\nPlease repeat input, "0" or "1"! For exit press enter "3"! : ')
          n -= 1
+	# If user not guess	 
  elif r == '1' or r == '0':
          print("Don't thinking! Listen the voice of intuition!")
      # Check: if the user incorect input

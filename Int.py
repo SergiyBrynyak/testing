@@ -19,7 +19,7 @@ while n < 10:
  print('Card №', n + 1, 'of 10')
  # Next command for testing! Displays generated number
  # print ('Fell =', zagad)
- r = input('Input "0" or "1"! For exit press enter "3"!')
+ r = input('Input "0" or "1"! For exit press enter "3"! : ')
  n += 1
  if r == zagad:
          sym += 1
@@ -28,14 +28,14 @@ while n < 10:
          break
      # Check: if the user does not introduced anything 
  elif not r:
-         print('\nPlease repeat input, "0" or "1"! For exit press enter "3"!')
+         print('\nPlease repeat input, "0" or "1"! For exit press enter "3"! : ')
          n -= 1
  elif r == '1' or r == '0':
          print("Don't thinking! Listen the voice of intuition!")
      # Check: if the user incorect input
  else:
          n -= 1
-         print('Your input is incorrect! Input "0" or "1"! For exit press enter "3"!')
+         print('Your input is incorrect! Input "0" or "1"! For exit press enter "3"! : ')
 print('\n\nResult: correct -', sym, '%', 'incorrect -', 10 - sym, '%')
 input('\nPress Enter for exit..')
          

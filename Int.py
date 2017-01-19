@@ -1,42 +1,66 @@
-# Intuition training program
-import random
-print (
+def main():
+    
+    print (
     """
 Program for training intuition.
 The program generated two number '1' or '0',
 and you have to guess what fell. You have 100
 attemps. Then the program show you results of
 your training.
+Don't thinking! Listen the voice of intuition!
     """
     )
-n = 0
-sym = int(0)
-# r - variable input
-r = ''
-# series of 100 attemps, in testing mobe only 10.
-while n < 10:
- zagad = str (random.randrange (2))
- print('Card â„–', n + 1, 'of 10')
- # Next command for testing! Displays generated number
- # print ('Fell =', zagad)
- r = input('Input "0" or "1"! For exit press enter "3"! : ')
- n += 1
- if r == zagad:
-         sym += 1
-     # For exit
- elif r == '3':
-         break
-     # Check: if the user does not introduced anything 
- elif not r:
-         print('\nPlease repeat input, "0" or "1"! For exit press enter "3"! : ')
-         n -= 1
-	# If user not guess	 
- elif r == '1' or r == '0':
-         print("Don't thinking! Listen the voice of intuition!")
-     # Check: if the user incorect input
- else:
-         n -= 1
-         print('Your input is incorrect! Input "0" or "1"! For exit press enter "3"! : ')
-print('\n\nResult: correct -', sym, '%', 'incorrect -', 10 - sym, '%')
-input('\nPress Enter for exit..')
-         
+    rezult = []
+    Choice(rezult)
+    printResult(rezult)
+
+
+
+# loop logic
+def Choice(rezult):
+     
+     import random
+     valid = ['0','1','3']
+     
+     while len(rezult)<10:
+        
+          print('Card ¹', len(rezult) + 1, 'of 10')
+          user_choice = input('Input "0" or "1"! For exit press enter "3"!: ')
+          zagad = str(random.randrange(2))
+                    
+          if  not user_choice:
+                print('Please input correct input!')          
+          elif user_choice in valid[0:2]:
+               Check(zagad, user_choice, rezult)
+          elif user_choice in valid[2]:
+               break
+          else:
+               print('Please input correct input!')
+ 
+     return rezult      
+          
+
+#check correct input 0 or 1
+def Check(zagad, user_choice, rezult):
+        
+         if zagad == user_choice:
+                   rezult.append(1)
+         else:
+                   rezult.append(0)
+         return
+
+def printResult(rezult):
+    print('\n\nResult: correct -', int(rezult.count(1)*100/len(rezult)), '%', 'incorrect -', int(rezult.count(0)*100/len(rezult)), '% from',len(rezult))
+    
+    print('Large range of 10 cards (correct | incorrect):')
+    print('correct -', int(rezult.count(1)*100/len(rezult)), '%', 'incorrect -', int(rezult.count(0)*100/len(rezult)), '%')
+    print('Two intervals of 5 cards (correct | incorrect):')
+    print('[',rezult[:5].count(1), '|', rezult[:5].count(0),']','[',rezult[5:].count(1),'|', rezult[5:].count(0),']')
+    print('5 small intervals of 2 cards (correct | incorrect):')
+    
+    
+    input('\nPress Enter for exit..')
+    
+    
+
+main()
